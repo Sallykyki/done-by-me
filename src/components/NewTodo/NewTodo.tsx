@@ -2,67 +2,70 @@ import React from "react";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/esm/Button";
+import { ITodo } from "../../interfaces/todo";
 
 interface IProps {
   onHide: () => void;
+  addTodo: (todo: ITodo) => void;
 }
 
 interface IState {
-  todo: string;
+  title: string;
   checked: boolean;
 }
 
 class NewTodo extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
-    this.state = { todo: "", checked: false };
+    this.state = { title: "", checked: false };
   }
 
   onTodoChange = (e: any) => {
-    this.setState({ todo: e.target.value });
+    this.setState({ title: e.target.value });
   };
 
   onCheckboxChange = () => {
     this.setState({ checked: !this.state.checked });
   };
 
-  addNewTodo = (e: any) => {
+  onSubmitTodo = (e: any) => {
     e.preventDefault();
 
-    const json = localStorage.getItem("todos");
-    const todos = json ? JSON.parse(json) : [];
+    const todo: ITodo = {
+      title: this.state.title,
+      checked: this.state.checked,
+    };
 
-    todos.push({ todo: this.state.todo, checked: this.state.checked });
+    this.props.addTodo(todo);
 
-    localStorage.setItem("todos", JSON.stringify(todos));
-
-    this.setState({ todo: "", checked: false });
+    this.setState({ title: "", checked: false });
   };
 
   render() {
     return (
-      <Form onSubmit={this.addNewTodo}>
-        <Form.Group>
-          <InputGroup className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Checkbox
-                checked={this.state.checked}
-                onChange={this.onCheckboxChange}
-                aria-label="checkbox for todo"
+      <React.Fragment>
+        <Form onSubmit={this.onSubmitTodo}>
+          <Form.Group>
+            <InputGroup className="mb-3">
+              <InputGroup.Prepend>
+                <InputGroup.Checkbox
+                  checked={this.state.checked}
+                  onChange={this.onCheckboxChange}
+                  aria-label="checkbox for todo"
+                />
+              </InputGroup.Prepend>
+              <FormControl
+                value={this.state.title}
+                onChange={this.onTodoChange}
+                aria-label="Text input with checkbox"
               />
-            </InputGroup.Prepend>
-            <FormControl
-              value={this.state.todo}
-              onChange={this.onTodoChange}
-              aria-label="Text input with checkbox"
-            />
-          </InputGroup>
-        </Form.Group>
-        <button>Habit</button>
-        <button>Week goal</button>
-        <button onClick={this.props.onHide}>Cancel</button>
-      </Form>
+            </InputGroup>
+          </Form.Group>
+          <button>Habit</button>
+          <button>Week goal</button>
+          <button onClick={this.props.onHide}>Cancel</button>
+        </Form>
+      </React.Fragment>
     );
   }
 }
