@@ -14,7 +14,7 @@ class Todo extends React.Component<IProps, IState> {
   }
   render() {
     return (
-      <Form>
+      <Form className="component-Todo">
         <Form.Check
           custom
           type="radio"

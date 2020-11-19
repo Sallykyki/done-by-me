@@ -1,0 +1,21 @@
+.component-Todo {
+  margin-bottom: 1.5rem;
+  .custom-control-label {
+    &::before {
+      border: $green-1 solid 2px;
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+    &::after {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+  .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: $white-1;
+    border-color: $green-1;
+  }
+  .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='-4 -4 8 8'%3e%3ccircle r='4' fill='%23647872'/%3e%3c/svg%3e");
+  }
+}
