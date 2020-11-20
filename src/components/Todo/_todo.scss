@@ -11,11 +11,26 @@
       height: 1.25rem;
     }
   }
+
   .custom-control-input:checked ~ .custom-control-label::before {
     background-color: $white-1;
+    border-color: $gray-2;
+  }
+  .custom-control-input:checked ~ .custom-control-label::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='-4 -4 8 8'%3e%3ccircle r='4' fill='%23c3c3c3'/%3e%3c/svg%3e");
+  }
+
+  .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: none;
+  }
+
+  .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
     border-color: $green-1;
   }
-  .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='-4 -4 8 8'%3e%3ccircle r='4' fill='%23647872'/%3e%3c/svg%3e");
+  &--checked {
+    .custom-control-label {
+      text-decoration: line-through;
+      color: $gray-2;
+    }
   }
 }
