@@ -37,6 +37,16 @@ class TodayPage extends React.Component<IProps, IState> {
     this.setState({ todos: this.getTodos() });
   };
 
+  updateTodo = (idx: number) => {
+    const { todos } = this.state;
+    const newTodos = [...todos];
+    newTodos[idx].checked = !todos[idx].checked;
+
+    localStorage.setItem("todos", JSON.stringify(newTodos));
+
+    this.setState({ todos: this.getTodos() });
+  };
+
   displayNewTodo = () => {
     this.setState({ display: true });
   };
@@ -49,7 +59,7 @@ class TodayPage extends React.Component<IProps, IState> {
     return (
       <div>
         <h1>Today page</h1>
-        <Todos todos={this.state.todos} />
+        <Todos todos={this.state.todos} updateTodo={this.updateTodo} />
         {this.state.display ? (
           <NewTodo onHide={this.hideNewTodo} addTodo={this.addTodo} />
         ) : null}
