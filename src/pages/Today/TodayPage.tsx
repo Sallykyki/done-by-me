@@ -57,9 +57,11 @@ class TodayPage extends React.Component<IProps, IState> {
 
   render() {
     return (
-      <div>
-        <h1>Today page</h1>
-        <Todos todos={this.state.todos} updateTodo={this.updateTodo} />
+      <div className="component-TodayPage">
+        <h1>Sooner than later</h1>
+        <div className="component-TodayPage__todo-list">
+          <Todos todos={this.state.todos} updateTodo={this.updateTodo} />
+        </div>
         {this.state.display ? (
           <NewTodo onHide={this.hideNewTodo} addTodo={this.addTodo} />
         ) : null}

@@ -3,12 +3,16 @@
   .custom-control-label {
     &::before {
       border: $green-1 solid 2px;
-      width: 1.25rem;
-      height: 1.25rem;
     }
+    &::before,
     &::after {
       width: 1.25rem;
       height: 1.25rem;
+      top: 0;
+      left: -2rem;
+    }
+    #text {
+      margin-left: 1rem;
     }
   }
 

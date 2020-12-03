@@ -2,6 +2,7 @@
 @import "./variables";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Proza+Libre:wght@400;500&display=swap");
 @import "../components/components";
+@import "../pages/pages";
 
 body {
   margin: 0;
@@ -12,4 +13,10 @@ body {
 
 h1 {
   font-family: $heading-font;
+}
+
+.btn:focus,
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus {
+  box-shadow: none;
 }
