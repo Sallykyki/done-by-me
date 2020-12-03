@@ -1,0 +1,22 @@
+.component-AddTodo {
+  &.btn-outline-primary {
+    color: $green-1;
+    border: 2px solid $green-1;
+    border-radius: 5px;
+    font-weight: 600;
+    padding-left: 0.25rem;
+    &:active,
+    &:hover,
+    &:focus {
+      background-color: $green-1 !important;
+      border: 2px solid $green-1 !important;
+      color: $white-1;
+    }
+    span {
+      vertical-align: middle;
+    }
+  }
+  position: absolute;
+  top: 0.5rem;
+  right: 4rem;
+}
