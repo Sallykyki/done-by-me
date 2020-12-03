@@ -3,7 +3,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Form from "react-bootstrap/Form";
 import { ITodo } from "../../interfaces/todo";
-
+import Label from "../../components/Label";
 interface IProps {
   onHide: () => void;
   addTodo: (todo: ITodo) => void;
@@ -44,26 +44,30 @@ class NewTodo extends React.Component<IProps, IState> {
   render() {
     return (
       <React.Fragment>
-        <Form onSubmit={this.onSubmitTodo}>
+        <Form className="component-NewTodo" onSubmit={this.onSubmitTodo}>
           <Form.Group>
-            <InputGroup className="mb-3">
-              <InputGroup.Prepend>
-                <InputGroup.Checkbox
-                  checked={this.state.checked}
-                  onChange={this.onCheckboxChange}
-                  aria-label="checkbox for todo"
-                />
-              </InputGroup.Prepend>
+            <InputGroup className="mb-3 component-NewTodo__input-group">
+              <Form.Check
+                custom
+                type="radio"
+                id="new to do"
+                checked={this.state.checked}
+                onClick={this.onCheckboxChange}
+                aria-label="checkbox for todo"
+              />
               <FormControl
+                autoFocus
                 value={this.state.title}
                 onChange={this.onTodoChange}
                 aria-label="Text input with checkbox"
               />
             </InputGroup>
           </Form.Group>
-          <button>Habit</button>
-          <button>Week goal</button>
-          <button onClick={this.props.onHide}>Cancel</button>
+          <Label labelType="week" />
+          <Label labelType="habit" />
+          <button type="button" onClick={this.props.onHide}>
+            Cancel
+          </button>
         </Form>
       </React.Fragment>
     );

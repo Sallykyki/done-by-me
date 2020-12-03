@@ -1,0 +1,46 @@
+.component-label {
+  &--week,
+  &--habit {
+    color: $white;
+    margin-right: 1rem;
+    &.btn.btn-primary {
+      border-color: transparent;
+      padding: 0 0.5rem;
+      border-radius: 5px;
+    }
+    &::before {
+      margin-right: 0.25rem;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: normal;
+    }
+  }
+  &--week {
+    background-color: $green-2;
+    &::before {
+      content: url("/assets/icons/goal.svg");
+    }
+    &:focus,
+    &:hover,
+    &:active {
+      background-color: $green-1 !important;
+      border-color: $green-1 !important;
+      outline: none;
+      box-shadow: none;
+    }
+  }
+  &--habit {
+    background-color: $pink-2;
+    &::before {
+      content: url("/assets/icons/replay.svg");
+    }
+    &:focus,
+    &:hover,
+    &:active {
+      background-color: $pink-1 !important;
+      border-color: $pink-1 !important;
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}
