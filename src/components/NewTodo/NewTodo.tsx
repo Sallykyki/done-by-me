@@ -12,12 +12,17 @@ interface IProps {
 interface IState {
   title: string;
   checked: boolean;
+  habits: string[];
 }
 
 class NewTodo extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
-    this.state = { title: "", checked: false };
+    this.state = {
+      title: "",
+      checked: false,
+      habits: ["wake up at 6", "practice piano"],
+    };
   }
 
   onTodoChange = (e: any) => {
@@ -39,6 +44,10 @@ class NewTodo extends React.Component<IProps, IState> {
     this.props.addTodo(todo);
 
     this.setState({ title: "", checked: false });
+  };
+
+  addNewHabit = (habit: string) => {
+    this.setState({ habits: [...this.state.habits, habit] });
   };
 
   render() {
@@ -63,8 +72,16 @@ class NewTodo extends React.Component<IProps, IState> {
               />
             </InputGroup>
           </Form.Group>
-          <Label labelType="week" />
-          <Label labelType="habit" />
+          <Label
+            labelType="week"
+            habits={this.state.habits}
+            addNewHabit={this.addNewHabit}
+          />
+          <Label
+            labelType="habit"
+            habits={this.state.habits}
+            addNewHabit={this.addNewHabit}
+          />
           <button type="button" onClick={this.props.onHide}>
             Cancel
           </button>
