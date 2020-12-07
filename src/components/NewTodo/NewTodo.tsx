@@ -21,7 +21,7 @@ class NewTodo extends React.Component<IProps, IState> {
     this.state = {
       title: "",
       checked: false,
-      habits: ["wake up at 6", "practice piano"],
+      habits: [],
     };
   }
 
@@ -46,8 +46,24 @@ class NewTodo extends React.Component<IProps, IState> {
     this.setState({ title: "", checked: false });
   };
 
+  getHabits = () => {
+    const json = localStorage.getItem("habits");
+    return json ? JSON.parse(json) : [];
+  };
+
+  componentDidMount() {
+    const habits = this.getHabits();
+    this.setState({ habits });
+  }
+
   addNewHabit = (habit: string) => {
-    this.setState({ habits: [...this.state.habits, habit] });
+    const { habits } = this.state;
+
+    habits.push(habit);
+
+    localStorage.setItem("habits", JSON.stringify(habits));
+
+    this.setState({ habits: this.getHabits() });
   };
 
   render() {
