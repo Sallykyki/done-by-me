@@ -32,7 +32,9 @@ class Todo extends React.Component<IProps, IState> {
           className={this.props.checked ? "component-Todo--checked" : ""}
           onClick={this.onClick}
         />
-        {this.props.habit}
+        {!!this.props.habit && (
+          <div className="component-Todo__habit-label">{this.props.habit}</div>
+        )}
       </Form>
     );
   }
