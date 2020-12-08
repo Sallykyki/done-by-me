@@ -12,6 +12,7 @@ interface IProps {
 interface IState {
   title: string;
   checked: boolean;
+  habit: string;
   habits: string[];
 }
 
@@ -21,7 +22,8 @@ class NewTodo extends React.Component<IProps, IState> {
     this.state = {
       title: "",
       checked: false,
-      habits: ["wake up at 6", "practice piano"],
+      habits: [],
+      habit: "",
     };
   }
 
@@ -39,18 +41,40 @@ class NewTodo extends React.Component<IProps, IState> {
     const todo: ITodo = {
       title: this.state.title,
       checked: this.state.checked,
+      habit: this.state.habit,
     };
 
     this.props.addTodo(todo);
 
-    this.setState({ title: "", checked: false });
+    this.setState({ title: "", checked: false, habit: "" });
   };
 
+  getHabits = () => {
+    const json = localStorage.getItem("habits");
+    return json ? JSON.parse(json) : [];
+  };
+
+  componentDidMount() {
+    const habits = this.getHabits();
+    this.setState({ habits });
+  }
+
   addNewHabit = (habit: string) => {
-    this.setState({ habits: [...this.state.habits, habit] });
+    const { habits } = this.state;
+
+    habits.push(habit);
+
+    localStorage.setItem("habits", JSON.stringify(habits));
+
+    this.setState({ habits: this.getHabits() });
+  };
+
+  addToHabit = (habit: string) => {
+    this.setState({ habit });
   };
 
   render() {
+    console.log(this.state.habit);
     return (
       <React.Fragment>
         <Form className="component-NewTodo" onSubmit={this.onSubmitTodo}>
@@ -72,15 +96,13 @@ class NewTodo extends React.Component<IProps, IState> {
               />
             </InputGroup>
           </Form.Group>
-          <Label
-            labelType="week"
-            habits={this.state.habits}
-            addNewHabit={this.addNewHabit}
-          />
+
+          {/* <Label labelType="week" /> */}
           <Label
             labelType="habit"
             habits={this.state.habits}
             addNewHabit={this.addNewHabit}
+            addToHabit={this.addToHabit}
           />
           <button type="button" onClick={this.props.onHide}>
             Cancel

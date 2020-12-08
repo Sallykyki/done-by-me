@@ -5,6 +5,7 @@ interface IProps {
   title: string;
   idx: number;
   checked: boolean;
+  habit: string;
   updateTodo: (idx: number) => void;
 }
 
@@ -31,6 +32,9 @@ class Todo extends React.Component<IProps, IState> {
           className={this.props.checked ? "component-Todo--checked" : ""}
           onClick={this.onClick}
         />
+        {!!this.props.habit && (
+          <div className="component-Todo__habit-label">{this.props.habit}</div>
+        )}
       </Form>
     );
   }

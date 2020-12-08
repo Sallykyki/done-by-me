@@ -3,9 +3,10 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 
 interface IProps {
-  labelType?: string;
-  habits?: string[];
-  addNewHabit: (habit: string) => void;
+  labelType: string;
+  habits: string[];
+  addNewHabit?: (habit: string) => void;
+  addToHabit: (habit: string) => void;
 }
 
 interface IState {
@@ -17,13 +18,14 @@ class Label extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
-      label: props.labelType === "week" ? "Week goal" : "New habit",
+      label: props.labelType === "week" ? "Week goal" : "Build habit",
       newHabit: "",
     };
   }
 
   handleClick = (habit: string) => () => {
     this.setState({ label: habit });
+    this.props.addToHabit(habit);
   };
 
   handleNewHabitChange = (e: any) => {
@@ -33,7 +35,7 @@ class Label extends React.Component<IProps, IState> {
   onSubmitNewHabit = (e: any) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      this.props.addNewHabit(this.state.newHabit);
+      this.props.addNewHabit!(this.state.newHabit);
       this.setState({ newHabit: "" });
     }
   };
