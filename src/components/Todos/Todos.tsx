@@ -22,6 +22,7 @@ class Todos extends React.Component<IProps, IState> {
             title={todo.title}
             checked={todo.checked}
             updateTodo={updateTodo}
+            habit={todo.habit}
           />
         ))}
       </div>
