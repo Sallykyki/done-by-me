@@ -19,7 +19,7 @@ function App() {
             <Col lg={2} md={3} className="app__side-nav">
               <SideNav />
             </Col>
-            <Col>
+            <Col className="app__page-content">
               <Switch>
                 <Route exact path="/">
                   <TodayPage />

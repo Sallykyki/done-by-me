@@ -1,6 +1,6 @@
 @import "~bootstrap/scss/bootstrap";
 @import "./variables";
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Proza+Libre:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Proza+Libre:wght@400;500&family=Cormorant+Upright&display=swap");
 @import "../components/components";
 @import "../pages/pages";
 
@@ -21,8 +21,13 @@ h1 {
   box-shadow: none;
 }
 
-.app__side-nav {
-  padding: 0;
-  height: 100vh;
-  background-color: $pink-2;
+.app {
+  &__page-content {
+    padding: 0;
+  }
+  &__side-nav {
+    padding: 0;
+    height: 100vh;
+    background-color: $pink-2;
+  }
 }

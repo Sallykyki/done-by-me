@@ -6,7 +6,11 @@ interface IState {}
 
 class WeekPage extends React.Component<IProps, IState> {
   render() {
-    return <div>Week page</div>;
+    return (
+      <div className="component-WeekPage">
+        <h1>Week page</h1>
+      </div>
+    );
   }
 }
 

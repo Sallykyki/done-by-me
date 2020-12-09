@@ -24,7 +24,7 @@ class HabitPage extends React.Component<IProps, IState> {
 
   render() {
     return (
-      <div>
+      <div className="component-HabitPage">
         <h1>Build your good habits</h1>
         <li>
           {this.state.habits.map((habit) => (
