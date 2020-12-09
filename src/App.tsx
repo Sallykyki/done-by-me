@@ -13,11 +13,10 @@ import Col from "react-bootstrap/Col";
 function App() {
   return (
     <div className="App">
-      <h1>DONE BY ME</h1>
       <Container fluid>
         <BrowserRouter>
           <Row>
-            <Col lg={2} md={3}>
+            <Col lg={2} md={3} className="app__side-nav">
               <SideNav />
             </Col>
             <Col>

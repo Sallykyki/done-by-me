@@ -20,3 +20,9 @@ h1 {
 .btn-primary:not(:disabled):not(.disabled):active:focus {
   box-shadow: none;
 }
+
+.app__side-nav {
+  padding: 0;
+  height: 100vh;
+  background-color: $pink-2;
+}

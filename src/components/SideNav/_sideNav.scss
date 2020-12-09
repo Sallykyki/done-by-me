@@ -1,0 +1,22 @@
+.component-SideNav {
+  &__today {
+    background-color: $white-1;
+  }
+  &__week {
+    background-color: $green-2;
+  }
+  &__habit {
+    background-color: $pink-2;
+  }
+  .nav-link {
+    a {
+      color: $gray-1;
+      font-family: $heading-font;
+      font-weight: 600;
+      font-size: 1.5rem;
+      display: block;
+      text-align: center;
+      line-height: 8.25rem;
+    }
+  }
+}
