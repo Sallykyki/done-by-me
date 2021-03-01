@@ -12,10 +12,6 @@ interface IProps {
 interface IState {}
 
 class Todo extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-  }
-
   onClick = () => {
     this.props.updateTodo(this.props.idx);
   };
