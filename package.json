@@ -1,5 +1,8 @@
 {
-  "name": "done-by-my",
+  "engines": {
+    "node": "10.16.0" 
+  },
+  "name": "done-by-me",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
