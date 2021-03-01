@@ -1,4 +1,5 @@
 import React from "react";
+import { getHabits } from "../../data/fetchData";
 
 interface IProps {}
 
@@ -12,13 +13,8 @@ class HabitPage extends React.Component<IProps, IState> {
     this.state = { habits: [] };
   }
 
-  getHabits = () => {
-    const json = localStorage.getItem("habits");
-    return json ? JSON.parse(json) : [];
-  };
-
   componentDidMount() {
-    const habits = this.getHabits();
+    const habits = getHabits();
     this.setState({ habits });
   }
 
@@ -26,11 +22,13 @@ class HabitPage extends React.Component<IProps, IState> {
     return (
       <div className="component-HabitPage">
         <h1>Build your good habits</h1>
-        <li>
-          {this.state.habits.map((habit) => (
-            <ul>{habit}</ul>
-          ))}
-        </li>
+        {this.state.habits.length > 0 && (
+          <li>
+            {this.state.habits.map((habit) => (
+              <ul>{habit}</ul>
+            ))}
+          </li>
+        )}
       </div>
     );
   }
