@@ -4,6 +4,7 @@ import FormControl from "react-bootstrap/FormControl";
 import Form from "react-bootstrap/Form";
 import { ITodo } from "../../interfaces/todo";
 import Label from "../../components/Label";
+import { getHabits } from "../../data/fetchData";
 interface IProps {
   onHide: () => void;
   addTodo: (todo: ITodo) => void;
@@ -49,13 +50,8 @@ class NewTodo extends React.Component<IProps, IState> {
     this.setState({ title: "", checked: false, habit: "" });
   };
 
-  getHabits = () => {
-    const json = localStorage.getItem("habits");
-    return json ? JSON.parse(json) : [];
-  };
-
   componentDidMount() {
-    const habits = this.getHabits();
+    const habits = getHabits();
     this.setState({ habits });
   }
 
@@ -66,7 +62,7 @@ class NewTodo extends React.Component<IProps, IState> {
 
     localStorage.setItem("habits", JSON.stringify(habits));
 
-    this.setState({ habits: this.getHabits() });
+    this.setState({ habits: getHabits() });
   };
 
   addToHabit = (habit: string) => {
