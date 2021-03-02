@@ -23,11 +23,11 @@ class HabitPage extends React.Component<IProps, IState> {
       <div className="component-HabitPage">
         <h1>Build your good habits</h1>
         {this.state.habits.length > 0 && (
-          <li>
+          <ul>
             {this.state.habits.map((habit) => (
-              <ul>{habit}</ul>
+              <li key={habit}>{habit}</li>
             ))}
-          </li>
+          </ul>
         )}
       </div>
     );
